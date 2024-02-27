@@ -6,9 +6,11 @@
 
 
 void llpivot(Node *&head, Node *&smaller, Node *&larger, int pivot) {
-    if (!head) 
-        return;
-    
+    if (!head) {
+        smaller = NULL;
+        larger = NULL;
+    }
+
     Node *cur = head;
     head = head->next;
 
