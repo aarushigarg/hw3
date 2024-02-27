@@ -86,16 +86,16 @@ Node* llfilter(Node* head, Comp pred)
     if (!head)
         return NULL;
     
-    Node* nextNode = head->next;
+    Node* nextNode = llfilter(head->next, pred);
     
     if (pred(head->val)) {
-        Node* temp = head;
-        head = head->next;
-        delete temp;
+        delete head;
+        return nextNode;
     }
-    if (head)
-        head->next = llfilter(nextNode, pred);
-    return head;
+    else {
+        head->next = nextNode;
+        return head;
+    }
 }
 
 #endif
